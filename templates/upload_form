@@ -1,0 +1,45 @@
+<html>
+<head>
+</head>
+
+<body>
+<style>
+table, th, td
+{
+border-collapse:collapse;
+border:1px solid black;
+}
+</style>
+
+<form enctype="multipart/form-data" action="/" method="post" class="center" >
+Upload new file <input type="file" name="uploaded_file" /> 
+<input type="submit" value="upload" class="button" /> 
+</form>
+
+<br>
+{% if message %}
+  {{message}}<br>
+{% end %}
+{% if uploads %}
+  uploads:
+  <table>
+    <tr>
+      <th>token</th>
+      <th>date</th>
+    </tr>
+  {% for row in uploads %}
+    <tr>
+      <td><a href='{{'view/'+escape(row[0])}}'>{{escape(row[0])}}</a></td>
+      <td>{{escape(row[1])}}</td>
+    </tr>
+  {% end %} 
+  </table>
+  <br>
+  You can upload more data, or delete everything and start over by pressing button below
+  <form action="/reset/">
+    <input type="submit" value="Delete all data">
+  </form>
+  
+{% end %}
+</body>
+</html>

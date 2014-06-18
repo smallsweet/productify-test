@@ -1,0 +1,29 @@
+<html>
+<head>
+</head>
+<body>
+<style>
+table, th, td
+{
+border-collapse:collapse;
+border:1px solid black;
+}
+</style>
+<table>
+{% if headers %}
+  <tr>
+  {% for header in headers %}
+    <th>{{ header[1] }}</th>
+  {% end %}
+  </tr>
+{%end%}
+{% for row in rows %}
+  <tr>
+  {% for cell in row %}
+    <td>{{str(cell)}}</td>
+  {%end%}
+  </tr>
+{%end%} 
+</table>
+</body>
+</html>
